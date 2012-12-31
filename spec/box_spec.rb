@@ -98,15 +98,15 @@ describe Box do
   describe '#ponts_to_put' do
    it {
       box = Box.new(Array.new(125, '*'))
-      box.ponts_to_put([1, 1, 1]).should == []
+      box.points_to_put([1, 1, 1]).should == []
     }
     it {
       box = Box.new(Array.new(1, '-') + Array.new(125 - 1, '*'))
-      box.ponts_to_put([1, 1, 1]).should == [[0, 0, 0]]
+      box.points_to_put([1, 1, 1]).should == [[0, 0, 0]]
     }
     it {
       box = Box.new(Array.new(2, '-') + Array.new(125 - 2, '*'))
-      box.ponts_to_put([1, 1, 1]).should == [[0, 0, 0], [1, 0, 0]]
+      box.points_to_put([1, 1, 1]).should == [[0, 0, 0], [1, 0, 0]]
     }
 
   end

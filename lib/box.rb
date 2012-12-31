@@ -53,7 +53,7 @@ class Box
     true
   end
 
-  def ponts_to_put(block)
+  def points_to_put(block)
     points = []
     for z in 0...BOX_SIZE
       for y in 0...BOX_SIZE

@@ -12,17 +12,18 @@ class Solver
     @step_count
   end
 
-  def solve(box = nil, blocks = nil)
+  def solve(box = nil, block_stack = nil)
     if box
       return box if box.full?
     else
       box = Box.new
-      blocks = Array.new(6, :a) + Array.new(6, :b) + Array.new(5, :c)
+      block_stack = Array.new(6, :a) + Array.new(6, :b) + Array.new(5, :c)
     end
 
-    p blocks.size
-    p blocks.shift
-    p blocks.size
+    blocks = Block.new(block_stack.shift)
+    blocks.to_a.each do |block|
+      p box.poins_to_put(block).size
+    end
 
   end
 end

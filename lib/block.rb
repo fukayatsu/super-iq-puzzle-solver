@@ -6,7 +6,8 @@ BLOCK_DATA = {
 
 class Block
   def initialize(type)
-    @blocks = BLOCK_DATA[type]
+    @type = type
+    @blocks = BLOCK_DATA[@type]
   end
 
   def pattern_count
