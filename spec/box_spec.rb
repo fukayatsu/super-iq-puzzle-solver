@@ -64,9 +64,11 @@ describe Box do
       box
     }
     context 'can put' do
+      it { subject.exists_at?(4, 4, 4).should == false }
       it { subject.can_put?([4, 4, 4], [1, 1, 1]).should == true }
     end
     context 'can not put' do
+      it { subject.exists_at?(0, 0, 0).should == true }
       it { subject.can_put?([0, 0, 0], [1, 1, 1]).should == false }
     end
   end

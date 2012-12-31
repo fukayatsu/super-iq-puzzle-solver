@@ -54,6 +54,15 @@ class Box
       block_end > 0 && block_end <= BOX_SIZE
     }
 
+    # 既にブロックが置かれている場所には置けない
+    for x in pos[0]...(pos[0] + block[0])
+      for y in pos[1]...(pos[1] + block[1])
+        for z in pos[2]...(pos[2] + block[2])
+          return false if exists_at?(x, y, z)
+        end
+      end
+    end
+
     true
   end
 
@@ -66,6 +75,10 @@ class Box
         end
       end
     end
+  end
+
+  def exists_at?(x, y, z)
+    @raw_array[Box.raw_index(x, y, z)] != 0
   end
 
   class << self
