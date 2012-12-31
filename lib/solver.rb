@@ -5,6 +5,7 @@ class Solver
   attr_reader :step_count, :box, :box_stock
   def initialize
     @step_count = 0
+    @memo = {}
   end
 
   def step_count
@@ -38,8 +39,8 @@ class Solver
         updated_box = Box.new(raw_array)
         updated_box.put(point, block, blocks.type.to_s)
 
-        # puts "**************"
-        # p updated_box
+        next if @memo.key? (updated_box.raw_array)
+        @memo[updated_box.raw_array] = true
 
         next_stack = Marshal.load(Marshal.dump(block_stack))
         next_step = solve(updated_box, next_stack)
