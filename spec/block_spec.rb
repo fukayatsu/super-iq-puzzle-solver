@@ -4,7 +4,7 @@ describe Block do
   context 'new block' do
     describe 'type A' do
       subject { Block.new(:a, 0) }
-      its(:volume) { should == 16 }
+      its(:volume) { should == 12 }
     end
 
     describe 'type B' do
