@@ -33,7 +33,7 @@ class Solver
         updated_box = Box.new(box.raw_array)
         updated_box.put(point, block, blocks.type.to_s)
         # puts "**************"
-        # p updated_box
+        p updated_box
 
         answer = solve(updated_box, block_stack)
         return answer if answer
