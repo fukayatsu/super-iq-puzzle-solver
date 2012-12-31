@@ -54,7 +54,18 @@ class Box
   end
 
   def ponts_to_put(block)
-    [[1, 1, 1], [2, 1, 1]]
+    points = []
+    for z in 0...BOX_SIZE
+      for y in 0...BOX_SIZE
+        for x in 0...BOX_SIZE
+          pos = [x, y, z]
+          if can_put?(pos, block)
+            points << pos
+          end
+        end
+      end
+    end
+    points
   end
 
   def put(pos, block, label)
