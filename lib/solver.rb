@@ -14,17 +14,32 @@ class Solver
 
   def solve(box = nil, block_stack = nil)
     if box
-      return box if box.full?
+      if box.full?
+        p box
+        exit
+      elsif block_stack.size == 0
+        return
+      end
     else
       box = Box.new
       block_stack = Array.new(6, :a) + Array.new(6, :b) + Array.new(5, :c)
     end
 
     blocks = Block.new(block_stack.shift)
+    has_next = false
     blocks.to_a.each do |block|
-      p box.poins_to_put(block).size
-    end
+      points =  box.points_to_put(block)
+      points.each do |point|
+        has_next = true
+        updated_box = Box.new(box.raw_array)
+        updated_box.put(point, block, blocks.type.to_s)
+        puts "**************"
+        p updated_box
 
+        return solve(updated_box, block_stack)
+      end
+    end
+    return unless has_next
   end
 end
 

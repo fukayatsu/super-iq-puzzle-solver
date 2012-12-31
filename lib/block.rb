@@ -5,6 +5,8 @@ BLOCK_DATA = {
 }
 
 class Block
+  attr_reader :type
+
   def initialize(type)
     @type = type
     @blocks = BLOCK_DATA[@type]
