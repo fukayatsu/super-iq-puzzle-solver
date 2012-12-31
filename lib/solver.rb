@@ -23,9 +23,9 @@ class Solver
       block_stack = Array.new(6, :a) + Array.new(6, :b) + Array.new(5, :c)
     end
 
+    blocks = Block.new(block_stack.shift)
     p block_stack
     p box
-    blocks = Block.new(block_stack.shift)
     blocks.to_a.each do |block|
       points =  box.points_to_put(block)
       points.each do |point|
