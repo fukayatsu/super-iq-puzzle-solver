@@ -30,13 +30,15 @@ class Solver
       points =  box.points_to_put(block)
       next if points.size == 0
       points.each do |point|
-        updated_box = Box.new(box.raw_array)
+        raw_array = Marshal.load(Marshal.dump(box.raw_array))
+        updated_box = Box.new(raw_array)
         updated_box.put(point, block, blocks.type.to_s)
 
         # puts "**************"
         # p updated_box
 
-        next_step = solve(updated_box, block_stack)
+        next_stack = Marshal.load(Marshal.dump(block_stack))
+        next_step = solve(updated_box, next_stack)
         return next_step if next_step
       end
     end
@@ -46,5 +48,5 @@ end
 
 if __FILE__ == $PROGRAM_NAME
   solver = Solver.new
-  p solver.solve
+  solver.solve
 end
