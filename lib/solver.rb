@@ -16,9 +16,10 @@ class Solver
     if box
       if box.full?
         p box
+        'finish'
         exit
       elsif block_stack.size == 0
-        return
+        return nil
       end
     else
       box = Box.new
@@ -26,20 +27,19 @@ class Solver
     end
 
     blocks = Block.new(block_stack.shift)
-    has_next = false
     blocks.to_a.each do |block|
       points =  box.points_to_put(block)
       points.each do |point|
-        has_next = true
         updated_box = Box.new(box.raw_array)
         updated_box.put(point, block, blocks.type.to_s)
-        puts "**************"
-        p updated_box
+        # puts "**************"
+        # p updated_box
 
-        return solve(updated_box, block_stack)
+        answer = solve(updated_box, block_stack)
+        return answer if answer
       end
     end
-    return unless has_next
+    nil
   end
 end
 
