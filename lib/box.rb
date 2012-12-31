@@ -69,7 +69,6 @@ class Box
   end
 
   def put(pos, block, label)
-    @raw_array[0] = label
     for z in pos[2]...(pos[2] + block[2])
       for y in pos[1]...(pos[1] + block[1])
         for x in pos[0]...(pos[0] + block[0])
