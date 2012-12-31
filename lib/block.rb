@@ -5,4 +5,8 @@ class Block
   def volume
     16
   end
+
+  def pattern_count
+    3
+  end
 end
