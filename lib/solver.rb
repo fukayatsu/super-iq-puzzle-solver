@@ -12,11 +12,6 @@ class Solver
     @step_count
   end
 
-  def step(status, pos, block)
-    @step_count += 1
-  end
-
-
   def solve(box = nil, blocks = nil)
     if box
       return box if box.full?
@@ -24,6 +19,10 @@ class Solver
       box = Box.new
       blocks = Array.new(6, :a) + Array.new(6, :b) + Array.new(5, :c)
     end
+
+    p blocks.size
+    p blocks.shift
+    p blocks.size
 
   end
 end
