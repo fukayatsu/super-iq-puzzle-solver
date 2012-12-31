@@ -3,9 +3,9 @@ require 'block'
 describe Block do
   context 'new block' do
     describe 'type A' do
-      subject {Block.new(:a, 0)}
+      subject { Block.new(:a, 0) }
 
-      it {volume.should == 16}
+      its(:volume) { should == 16 }
       it 'has 3 patterns'
     end
 
