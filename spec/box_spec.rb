@@ -7,7 +7,9 @@ NEW_BOX_PRINT = <<"EOT"
 - - - - -
 - - - - -
 - - - - -
+- - - - -
 1
+- - - - -
 - - - - -
 - - - - -
 - - - - -
@@ -17,12 +19,15 @@ NEW_BOX_PRINT = <<"EOT"
 - - - - -
 - - - - -
 - - - - -
+- - - - -
 3
 - - - - -
 - - - - -
 - - - - -
 - - - - -
+- - - - -
 4
+- - - - -
 - - - - -
 - - - - -
 - - - - -
@@ -40,7 +45,7 @@ describe Box do
   context 'new box' do
     subject { Box.new }
     its(:content) { should == 0 }
-    its(:raw_array) { should == Array.new(125, 0) }
+    its(:raw_array) { should == Array.new(125, '-') }
     its(:to_s) { should == NEW_BOX_PRINT }
   end
 
@@ -77,13 +82,13 @@ describe Box do
     subject { Box.new }
     it {
       subject.put([0,0,0], [1,1,1], '*')
-      expected_array = Array.new(125, 0)
+      expected_array = Array.new(125, '-')
       expected_array[0] = '*'
       subject.raw_array.should == expected_array
     }
     it {
       subject.put([0,0,0], [2,1,1], '*')
-      expected_array = Array.new(125, 0)
+      expected_array = Array.new(125, '-')
       expected_array[0..1] = ['*', '*']
       subject.raw_array.should == expected_array
     }

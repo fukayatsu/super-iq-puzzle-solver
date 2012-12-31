@@ -1,36 +1,8 @@
-NEW_BOX_PRINT = <<"EOT"
-0
-- - - - -
-- - - - -
-- - - - -
-- - - - -
-1
-- - - - -
-- - - - -
-- - - - -
-- - - - -
-2
-- - - - -
-- - - - -
-- - - - -
-- - - - -
-3
-- - - - -
-- - - - -
-- - - - -
-- - - - -
-4
-- - - - -
-- - - - -
-- - - - -
-- - - - -
-EOT
-
-BOX_SIZE = 5
-
 class Box
+  BOX_SIZE = 5
+
   def initialize
-    @raw_array = Array.new(125, 0)
+    @raw_array = Array.new(125, '-')
   end
 
   def content
@@ -38,7 +10,18 @@ class Box
   end
 
   def to_s
-    NEW_BOX_PRINT
+    text = ''
+    for z in 0...BOX_SIZE
+      text += "#{z}\n"
+      for y in 0...BOX_SIZE
+        for x in 0...BOX_SIZE
+          text += "#{@raw_array[Box.raw_index(x, y, z)]}"
+          text += " " unless(x == BOX_SIZE - 1)
+        end
+        text += "\n"
+      end
+    end
+    text
   end
 
   def raw_array
@@ -55,9 +38,9 @@ class Box
     }
 
     # 既にブロックが置かれている場所には置けない
-    for x in pos[0]...(pos[0] + block[0])
+    for z in pos[2]...(pos[2] + block[2])
       for y in pos[1]...(pos[1] + block[1])
-        for z in pos[2]...(pos[2] + block[2])
+        for x in pos[0]...(pos[0] + block[0])
           return false if exists_at?(x, y, z)
         end
       end
@@ -68,9 +51,9 @@ class Box
 
   def put(pos, block, label)
     @raw_array[0] = label
-    for x in pos[0]...(pos[0] + block[0])
+    for z in pos[2]...(pos[2] + block[2])
       for y in pos[1]...(pos[1] + block[1])
-        for z in pos[2]...(pos[2] + block[2])
+        for x in pos[0]...(pos[0] + block[0])
           @raw_array[Box.raw_index(x, y, z)] = label
         end
       end
@@ -78,7 +61,7 @@ class Box
   end
 
   def exists_at?(x, y, z)
-    @raw_array[Box.raw_index(x, y, z)] != 0
+    @raw_array[Box.raw_index(x, y, z)] != '-'
   end
 
   class << self
