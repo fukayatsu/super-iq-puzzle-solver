@@ -23,13 +23,12 @@ class Solver
       block_stack = Array.new(6, :a) + Array.new(6, :b) + Array.new(5, :c)
     end
 
+    p block_stack.size
+
     blocks = Block.new(block_stack.shift)
-    p block_stack
-    p box
     blocks.to_a.each do |block|
       points =  box.points_to_put(block)
       next if points.size == 0
-      p points
       points.each do |point|
         updated_box = Box.new(box.raw_array)
         updated_box.put(point, block, blocks.type.to_s)
