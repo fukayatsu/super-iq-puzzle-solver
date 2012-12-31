@@ -26,11 +26,9 @@ NEW_BOX_PRINT = <<"EOT"
 - - - - -
 EOT
 
-class Box
-  def size_spec
-    [5, 5, 5]
-  end
+BOX_SIZE = 5
 
+class Box
   def content
     0
   end
@@ -43,7 +41,8 @@ class Box
     Array.new(125, 0)
   end
 
-  def can_put?(pos, block, label = '*')
+  def can_put?(pos, block)
+    return false if pos.any? {|v| v < 0 || v >= BOX_SIZE}
     true
   end
 end
