@@ -23,7 +23,7 @@ class Solver
       block_stack = Array.new(6, :a) + Array.new(6, :b) + Array.new(5, :c)
     end
 
-    p block_stack.size
+    # p block_stack.size
 
     blocks = Block.new(block_stack.shift)
     blocks.to_a.each do |block|
