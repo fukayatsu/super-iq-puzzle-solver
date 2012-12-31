@@ -2,6 +2,7 @@ require 'solver'
 
 describe Solver do
   context '#new' do
-    it 'step is 0'
+    subject { Solver.new }
+    its(:step_count) { should == 0 }
   end
 end
