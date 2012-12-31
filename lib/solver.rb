@@ -26,6 +26,9 @@ class Solver
     # p block_stack.size
 
     blocks = Block.new(block_stack.shift)
+    if block_stack.size = 16
+      p box
+    end
     blocks.to_a.each do |block|
       points =  box.points_to_put(block)
       next if points.size == 0
