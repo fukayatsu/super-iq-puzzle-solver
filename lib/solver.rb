@@ -10,4 +10,8 @@ class Solver
   def step
     @step_count += 1
   end
+
+  def solved?
+    false
+  end
 end

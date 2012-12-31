@@ -4,6 +4,7 @@ describe Solver do
   context '#new' do
     subject { Solver.new }
     its(:step_count) { should == 0 }
+    its(:solved?) { should == false }
   end
 
   context 'first step' do
