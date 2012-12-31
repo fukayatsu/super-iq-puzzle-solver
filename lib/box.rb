@@ -60,4 +60,10 @@ class Box
   def put(pos, block, label)
     @raw_array[0] = label
   end
+
+  class << self
+    def raw_index(x, y, z)
+      x + BOX_SIZE * ( y + BOX_SIZE * z)
+    end
+  end
 end

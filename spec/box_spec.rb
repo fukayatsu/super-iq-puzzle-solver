@@ -30,6 +30,13 @@ NEW_BOX_PRINT = <<"EOT"
 EOT
 
 describe Box do
+  describe 'class method' do
+    it { Box.raw_index(0, 0, 0).should == 0 }
+    it { Box.raw_index(1, 0, 0).should == 1 }
+    it { Box.raw_index(0, 1, 0).should == 5 }
+    it { Box.raw_index(1, 1, 2).should == 56 }
+  end
+
   context 'new box' do
     subject { Box.new }
     its(:content) { should == 0 }
@@ -56,6 +63,12 @@ describe Box do
       subject.put([0,0,0], [1,1,1], '*')
       expected_array = Array.new(125, 0)
       expected_array[0] = '*'
+      subject.raw_array.should == expected_array
+    }
+    it {
+      subject.put([0,0,0], [2,1,1], '*')
+      expected_array = Array.new(125, 0)
+      expected_array[0..1] = ['*', '*']
       subject.raw_array.should == expected_array
     }
   end
