@@ -42,7 +42,14 @@ class Box
   end
 
   def can_put?(pos, block)
-    return false if pos.any? {|v| v < 0 || v >= BOX_SIZE}
+    return false unless pos.all? { |v| v >= 0 && v < BOX_SIZE }
+
+    putted_blocks = pos.zip(block)
+    return false unless putted_blocks.all? { |v|
+      block_end = v[0] + v[1]
+      block_end > 0 && block_end <= BOX_SIZE
+    }
+
     true
   end
 end

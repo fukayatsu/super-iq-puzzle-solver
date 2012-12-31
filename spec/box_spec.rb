@@ -40,10 +40,12 @@ describe Box do
   context 'can put block?' do
     subject { Box.new }
     context 'can' do
-      it { subject.can_put?([0,0,0], [1,1,1]).should == true }
+      it { subject.can_put?([0, 0, 0], [1, 1, 1]).should == true }
+      it { subject.can_put?([4, 0, 0], [1, 1, 1]).should == true }
     end
     context 'can not' do
-      it { subject.can_put?([5,0,0], [1,1,1]).should == false }
+      it { subject.can_put?([5, 0, 0], [1, 1, 1]).should == false }
+      it { subject.can_put?([0, 0, 0], [10, 1, 1]).should == false }
     end
   end
 end
