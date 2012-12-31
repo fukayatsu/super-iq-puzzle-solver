@@ -48,5 +48,5 @@ end
 
 if __FILE__ == $PROGRAM_NAME
   solver = Solver.new
-  solver.solve
+  p solver.solve
 end
