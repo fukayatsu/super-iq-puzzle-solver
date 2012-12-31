@@ -49,4 +49,14 @@ describe Box do
       it { subject.can_put?([0, 0, 0], [6, 1, 1]).should == false }
     end
   end
+
+  context "first step" do
+    subject { Box.new }
+    it {
+      subject.put([0,0,0], [1,1,1], '*')
+      expected_array = Array.new(125, 0)
+      expected_array[0] = '*'
+      subject.raw_array.should == expected_array
+    }
+  end
 end

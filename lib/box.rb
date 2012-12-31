@@ -29,6 +29,10 @@ EOT
 BOX_SIZE = 5
 
 class Box
+  def initialize
+    @raw_array = Array.new(125, 0)
+  end
+
   def content
     0
   end
@@ -38,7 +42,7 @@ class Box
   end
 
   def raw_array
-    Array.new(125, 0)
+    @raw_array
   end
 
   def can_put?(pos, block)
@@ -51,5 +55,9 @@ class Box
     }
 
     true
+  end
+
+  def put(pos, block, label)
+    @raw_array[0] = label
   end
 end
