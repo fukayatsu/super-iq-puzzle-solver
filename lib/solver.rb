@@ -1,6 +1,10 @@
+require_relative 'block'
+require_relative 'box'
+
 class Solver
   def initialize
     @step_count = 0
+    @box = Box.new
   end
 
   def step_count
@@ -14,4 +18,7 @@ class Solver
   def solved?
     false
   end
+end
+
+if __FILE__ == $PROGRAM_NAME
 end

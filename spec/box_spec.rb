@@ -47,6 +47,7 @@ describe Box do
     its(:content) { should == 0 }
     its(:raw_array) { should == Array.new(125, '-') }
     its(:to_s) { should == NEW_BOX_PRINT }
+    its(:full?) { should == false }
   end
 
   context 'put block for first step' do

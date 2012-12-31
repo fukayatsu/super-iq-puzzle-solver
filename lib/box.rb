@@ -64,6 +64,10 @@ class Box
     @raw_array[Box.raw_index(x, y, z)] != '-'
   end
 
+  def full?
+    @raw_array.count('-') == 0
+  end
+
   class << self
     def raw_index(x, y, z)
       x + BOX_SIZE * ( y + BOX_SIZE * z)
