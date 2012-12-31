@@ -96,10 +96,18 @@ describe Box do
   end
 
   describe '#ponts_to_put' do
-    subject {
-      raw_array = Array.new(2, '-') + Array.new(125 - 2, '-')
-      Box.new(raw_array)
+   it {
+      box = Box.new(Array.new(125, '*'))
+      box.ponts_to_put([1, 1, 1]).should == []
     }
-    it { subject.ponts_to_put([1, 1, 1]).should == [[1, 1, 1], [2, 1, 1]]}
+    it {
+      box = Box.new(Array.new(1, '-') + Array.new(125 - 1, '*'))
+      box.ponts_to_put([1, 1, 1]).should == [[1, 1, 1]]
+    }
+    it {
+      box = Box.new(Array.new(2, '-') + Array.new(125 - 2, '*'))
+      box.ponts_to_put([1, 1, 1]).should == [[1, 1, 1], [2, 1, 1]]
+    }
+
   end
 end
