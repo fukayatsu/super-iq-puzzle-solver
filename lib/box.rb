@@ -59,6 +59,13 @@ class Box
 
   def put(pos, block, label)
     @raw_array[0] = label
+    for x in pos[0]...(pos[0] + block[0])
+      for y in pos[1]...(pos[1] + block[1])
+        for z in pos[2]...(pos[2] + block[2])
+          @raw_array[Box.raw_index(x, y, z)] = label
+        end
+      end
+    end
   end
 
   class << self
