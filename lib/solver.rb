@@ -24,6 +24,7 @@ class Solver
     end
 
     p block_stack
+    p box
     blocks = Block.new(block_stack.shift)
     blocks.to_a.each do |block|
       points =  box.points_to_put(block)
