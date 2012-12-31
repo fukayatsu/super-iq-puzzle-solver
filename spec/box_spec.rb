@@ -37,7 +37,7 @@ describe Box do
     its(:to_s) { should == NEW_BOX_PRINT }
   end
 
-  context 'can put block?' do
+  context 'put block for first step' do
     subject { Box.new }
     context 'can' do
       it { subject.can_put?([0, 0, 0], [1, 1, 1]).should == true }
@@ -45,7 +45,8 @@ describe Box do
     end
     context 'can not' do
       it { subject.can_put?([5, 0, 0], [1, 1, 1]).should == false }
-      it { subject.can_put?([0, 0, 0], [10, 1, 1]).should == false }
+      it { subject.can_put?([4, 0, 0], [2, 1, 1]).should == false }
+      it { subject.can_put?([0, 0, 0], [6, 1, 1]).should == false }
     end
   end
 end
