@@ -46,14 +46,28 @@ describe Box do
 
   context 'put block for first step' do
     subject { Box.new }
-    context 'can' do
+    context 'can put' do
       it { subject.can_put?([0, 0, 0], [1, 1, 1]).should == true }
       it { subject.can_put?([4, 0, 0], [1, 1, 1]).should == true }
     end
-    context 'can not' do
+    context 'can not put' do
       it { subject.can_put?([5, 0, 0], [1, 1, 1]).should == false }
       it { subject.can_put?([4, 0, 0], [2, 1, 1]).should == false }
       it { subject.can_put?([0, 0, 0], [6, 1, 1]).should == false }
+    end
+  end
+
+  context 'put block for 2nd step' do
+    subject {
+      box = Box.new
+      box.put([0, 0, 0], [4, 2, 1], '*')
+      box
+    }
+    context 'can put' do
+      it { subject.can_put?([4, 4, 4], [1, 1, 1]).should == true }
+    end
+    context 'can not put' do
+      it { subject.can_put?([0, 0, 0], [1, 1, 1]).should == false }
     end
   end
 
