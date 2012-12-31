@@ -1,0 +1,2 @@
+super-iq-puzzle-solver
+======================
