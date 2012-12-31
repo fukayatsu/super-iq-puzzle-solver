@@ -27,6 +27,10 @@ NEW_BOX_PRINT = <<"EOT"
 EOT
 
 class Box
+  def raw_array
+    Array.new(125, 0)
+  end
+
   def size_spec
     [5, 5, 5]
   end
