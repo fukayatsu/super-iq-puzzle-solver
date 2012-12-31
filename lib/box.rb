@@ -1,12 +1,16 @@
 class Box
   BOX_SIZE = 5
 
-  def initialize
-    @raw_array = Array.new(125, '-')
+  def initialize(raw_array = nil)
+    @raw_array = raw_array || Array.new(125, '-')
   end
 
   def content
     0
+  end
+
+  def size
+    BOX_SIZE
   end
 
   def to_s
@@ -47,6 +51,10 @@ class Box
     end
 
     true
+  end
+
+  def ponts_to_put(block)
+    [[1, 1, 1], [2, 1, 1]]
   end
 
   def put(pos, block, label)

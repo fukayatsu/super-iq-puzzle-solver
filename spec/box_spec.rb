@@ -94,4 +94,12 @@ describe Box do
       subject.raw_array.should == expected_array
     }
   end
+
+  describe '#ponts_to_put' do
+    subject {
+      raw_array = Array.new(2, '-') + Array.new(125 - 2, '-')
+      Box.new(raw_array)
+    }
+    it { subject.ponts_to_put([1, 1, 1]).should == [[1, 1, 1], [2, 1, 1]]}
+  end
 end
