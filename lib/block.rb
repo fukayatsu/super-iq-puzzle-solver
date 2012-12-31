@@ -9,6 +9,10 @@ class Block
     @size_spec = BLOCK_DATA[type][pattern_number]
   end
 
+  def size_spec
+    @size_spec
+  end
+
   def volume
     @size_spec.inject(1, :*)
   end
