@@ -27,7 +27,7 @@ class Solver
     # p block_stack.size
 
     blocks = Block.new(block_stack.shift)
-    if block_stack.size == 8
+    if block_stack.size == 10
       p Time.now
       p box
     end
