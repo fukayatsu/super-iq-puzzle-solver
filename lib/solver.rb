@@ -28,6 +28,8 @@ class Solver
     p box
     blocks.to_a.each do |block|
       points =  box.points_to_put(block)
+      next if points.size == 0
+      p points
       points.each do |point|
         updated_box = Box.new(box.raw_array)
         updated_box.put(point, block, blocks.type.to_s)
